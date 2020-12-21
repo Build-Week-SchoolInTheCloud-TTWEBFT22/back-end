@@ -61,6 +61,14 @@ public class User
         allowSetters = true)
     private List<Useremail> useremails = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties(value = "user",
+            allowSetters = true)
+    private List<UserTasks> usertasks = new ArrayList<>();
+
     /**
      * Part of the join relationship between user and role
      * connects users to the user role combination
@@ -225,6 +233,14 @@ public class User
     public void setRoles(Set<UserRoles> roles)
     {
         this.roles = roles;
+    }
+
+    public List<UserTasks> getUsertasks() {
+        return usertasks;
+    }
+
+    public void setUsertasks(List<UserTasks> usertasks) {
+        this.usertasks = usertasks;
     }
 
     /**

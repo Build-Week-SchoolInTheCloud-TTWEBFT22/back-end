@@ -1,10 +1,7 @@
 package com.lambdaschool.schoolinthecloud.services;
 
 import com.lambdaschool.schoolinthecloud.exceptions.ResourceNotFoundException;
-import com.lambdaschool.schoolinthecloud.models.Role;
-import com.lambdaschool.schoolinthecloud.models.User;
-import com.lambdaschool.schoolinthecloud.models.UserRoles;
-import com.lambdaschool.schoolinthecloud.models.Useremail;
+import com.lambdaschool.schoolinthecloud.models.*;
 import com.lambdaschool.schoolinthecloud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -124,6 +121,15 @@ public class UserServiceImpl
                     ue.getUseremail()));
         }
 
+        newUser.getUsertasks()
+                .clear();
+        for (UserTasks ut : user.getUsertasks())
+        {
+            newUser.getUsertasks()
+                    .add(new UserTasks(newUser,
+                            ut.getDescription()));
+        }
+
         return userrepos.save(newUser);
     }
 
@@ -182,6 +188,19 @@ public class UserServiceImpl
                     currentUser.getUseremails()
                         .add(new Useremail(currentUser,
                             ue.getUseremail()));
+                }
+            }
+
+            if (user.getUsertasks()
+                    .size() > 0)
+            {
+                currentUser.getUsertasks()
+                        .clear();
+                for (UserTasks ut : user.getUsertasks())
+                {
+                    currentUser.getUsertasks()
+                            .add(new UserTasks(currentUser,
+                                    ut.getDescription()));
                 }
             }
 
