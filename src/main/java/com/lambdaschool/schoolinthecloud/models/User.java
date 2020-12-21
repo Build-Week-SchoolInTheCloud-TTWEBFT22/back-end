@@ -51,16 +51,6 @@ public class User
     @Email
     private String primaryemail;
 
-    /**
-     * A list of emails for this user
-     */
-    @OneToMany(mappedBy = "user",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
-    @JsonIgnoreProperties(value = "user",
-        allowSetters = true)
-    private List<Useremail> useremails = new ArrayList<>();
-
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
@@ -195,25 +185,6 @@ public class User
         this.password = passwordEncoder.encode(password);
     }
 
-    /**
-     * Getter for the list of useremails for this user
-     *
-     * @return the list of useremails (List(Useremail)) for this user
-     */
-    public List<Useremail> getUseremails()
-    {
-        return useremails;
-    }
-
-    /**
-     * Setter for list of useremails for this user
-     *
-     * @param useremails the new list of useremails (List(Useremail)) for this user
-     */
-    public void setUseremails(List<Useremail> useremails)
-    {
-        this.useremails = useremails;
-    }
 
     /**
      * Getter for user role combinations

@@ -112,15 +112,6 @@ public class UserServiceImpl
                     addRole));
         }
 
-        newUser.getUseremails()
-            .clear();
-        for (Useremail ue : user.getUseremails())
-        {
-            newUser.getUseremails()
-                .add(new Useremail(newUser,
-                    ue.getUseremail()));
-        }
-
         newUser.getUsertasks()
                 .clear();
         for (UserTasks ut : user.getUsertasks())
@@ -175,19 +166,6 @@ public class UserServiceImpl
                     currentUser.getRoles()
                         .add(new UserRoles(currentUser,
                             addRole));
-                }
-            }
-
-            if (user.getUseremails()
-                .size() > 0)
-            {
-                currentUser.getUseremails()
-                    .clear();
-                for (Useremail ue : user.getUseremails())
-                {
-                    currentUser.getUseremails()
-                        .add(new Useremail(currentUser,
-                            ue.getUseremail()));
                 }
             }
 

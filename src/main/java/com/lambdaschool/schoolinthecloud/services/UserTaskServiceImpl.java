@@ -4,7 +4,6 @@ package com.lambdaschool.schoolinthecloud.services;
 import com.lambdaschool.schoolinthecloud.exceptions.ResourceNotFoundException;
 import com.lambdaschool.schoolinthecloud.models.User;
 import com.lambdaschool.schoolinthecloud.models.UserTasks;
-import com.lambdaschool.schoolinthecloud.models.Useremail;
 import com.lambdaschool.schoolinthecloud.repository.UserTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

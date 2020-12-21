@@ -127,8 +127,8 @@ public class SeedData
                 fakeUser.getRoles()
                     .add(new UserRoles(fakeUser,
                         r2));
-                fakeUser.getUseremails()
-                    .add(new Useremail(fakeUser,
+                fakeUser.getUsertasks()
+                    .add(new UserTasks(fakeUser,
                         fakeValuesService.bothify("????##@gmail.com")));
                 userService.save(fakeUser);
             }

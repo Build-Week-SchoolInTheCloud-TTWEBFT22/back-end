@@ -5,7 +5,7 @@ import com.lambdaschool.schoolinthecloud.SchoolInTheCloudApplication;
 import com.lambdaschool.schoolinthecloud.models.Role;
 import com.lambdaschool.schoolinthecloud.models.User;
 import com.lambdaschool.schoolinthecloud.models.UserRoles;
-import com.lambdaschool.schoolinthecloud.models.Useremail;
+import com.lambdaschool.schoolinthecloud.models.UserTasks;
 import com.lambdaschool.schoolinthecloud.services.UserService;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.After;
@@ -84,19 +84,19 @@ public class UserControllerUnitTest
             .add(new UserRoles(u1,
                 r3));
 
-        u1.getUseremails()
-            .add(new Useremail(u1,
+        u1.getUsertasks()
+            .add(new UserTasks(u1,
                 "admin@email.local"));
-        u1.getUseremails()
+        u1.getUsertasks()
             .get(0)
-            .setUseremailid(10);
+            .setTaskid(10);
 
-        u1.getUseremails()
-            .add(new Useremail(u1,
+        u1.getUsertasks()
+            .add(new UserTasks(u1,
                 "admin@mymail.local"));
-        u1.getUseremails()
+        u1.getUsertasks()
             .get(1)
-            .setUseremailid(11);
+            .setTaskid(11);
 
         u1.setUserid(101);
         userList.add(u1);
@@ -113,26 +113,26 @@ public class UserControllerUnitTest
             .add(new UserRoles(u2,
                 r3));
 
-        u2.getUseremails()
-            .add(new Useremail(u2,
+        u2.getUsertasks()
+            .add(new UserTasks(u2,
                 "cinnamon@mymail.local"));
-        u2.getUseremails()
+        u2.getUsertasks()
             .get(0)
-            .setUseremailid(20);
+            .setTaskid(20);
 
-        u2.getUseremails()
-            .add(new Useremail(u2,
+        u2.getUsertasks()
+            .add(new UserTasks(u2,
                 "hops@mymail.local"));
-        u2.getUseremails()
+        u2.getUsertasks()
             .get(1)
-            .setUseremailid(21);
+            .setTaskid(21);
 
-        u2.getUseremails()
-            .add(new Useremail(u2,
+        u2.getUsertasks()
+            .add(new UserTasks(u2,
                 "bunny@email.local"));
-        u2.getUseremails()
+        u2.getUsertasks()
             .get(2)
-            .setUseremailid(22);
+            .setTaskid(22);
 
         u2.setUserid(102);
         userList.add(u2);
@@ -145,12 +145,12 @@ public class UserControllerUnitTest
             .add(new UserRoles(u3,
                 r1));
 
-        u3.getUseremails()
-            .add(new Useremail(u3,
+        u3.getUsertasks()
+            .add(new UserTasks(u3,
                 "barnbarn@email.local"));
-        u3.getUseremails()
+        u3.getUsertasks()
             .get(0)
-            .setUseremailid(30);
+            .setTaskid(30);
 
         u3.setUserid(103);
         userList.add(u3);
