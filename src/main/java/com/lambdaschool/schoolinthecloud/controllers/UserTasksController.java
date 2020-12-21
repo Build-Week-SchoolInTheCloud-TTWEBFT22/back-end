@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -42,13 +43,16 @@ public class UserTasksController {
 
     // DELETE http://localhost:2019/tasks/task/{taskid}
     // Removes the task with the provided taskid
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/task/{taskid}", produces = "application/json")
     public ResponseEntity<?> deleteTask(@PathVariable long taskid) {
         userTaskService.delete(taskid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     // POST http://localhost:2019/tasks/task/{userid}/description/{taskdescription}
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping(value = "/task/{userid}/description/{taskdescription}", consumes = "application/json")
     public ResponseEntity<?> addTask(
         @PathVariable long userid,
