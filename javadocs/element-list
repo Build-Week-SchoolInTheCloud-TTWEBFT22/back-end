@@ -1,0 +1,8 @@
+com.lambdaschool.schoolinthecloud
+com.lambdaschool.schoolinthecloud.config
+com.lambdaschool.schoolinthecloud.controllers
+com.lambdaschool.schoolinthecloud.exceptions
+com.lambdaschool.schoolinthecloud.handlers
+com.lambdaschool.schoolinthecloud.models
+com.lambdaschool.schoolinthecloud.repository
+com.lambdaschool.schoolinthecloud.services
