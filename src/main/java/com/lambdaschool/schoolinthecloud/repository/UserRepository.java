@@ -1,6 +1,7 @@
 package com.lambdaschool.schoolinthecloud.repository;
 
 import com.lambdaschool.schoolinthecloud.models.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -26,4 +27,11 @@ public interface UserRepository
      * @return List of users whose name contain the given substring ignoring case
      */
     List<User> findByUsernameContainingIgnoreCase(String name);
+
+
+    @Query(value = "select * from users u " +
+            "LEFT JOIN userroles ur " +
+            "ON u.userid = ur.userid " +
+            "WHERE ur.roleid = 3", nativeQuery = true)
+    List<User> getVolunteers();
 }

@@ -82,9 +82,6 @@ public class SeedData
         u2.getRoles()
                 .add(new UserRoles(u2,
                         r2));
-        u2.getRoles()
-                .add(new UserRoles(u2,
-                        r3));
         userService.save(u2);
 
         // user
@@ -93,7 +90,7 @@ public class SeedData
                 "volunteer@lambdaschool.local");
         u3.getRoles()
                 .add(new UserRoles(u3,
-                        r2));
+                        r3));
         u3.getUsertasks()
                 .add(new UserTasks( u3, "Teach Math"));
         u3.getUsertasks()

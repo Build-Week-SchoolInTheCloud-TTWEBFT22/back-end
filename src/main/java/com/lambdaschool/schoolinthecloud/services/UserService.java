@@ -44,6 +44,9 @@ public interface UserService
      */
     User findByName(String name);
 
+
+    List<User> getVolunteers();
+
     /**
      * Deletes the user record and its useremail items from the database based off of the provided primary key
      *

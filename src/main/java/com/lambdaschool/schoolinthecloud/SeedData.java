@@ -62,38 +62,35 @@ public class SeedData
 
         // admin, data, user
         User u1 = new User("admin",
-            "password",
-            "admin@lambdaschool.local");
+                "password",
+                "admin@lambdaschool.local");
         u1.getRoles()
-            .add(new UserRoles(u1,
-                r1));
+                .add(new UserRoles(u1,
+                        r1));
         u1.getRoles()
-            .add(new UserRoles(u1,
-                r2));
+                .add(new UserRoles(u1,
+                        r2));
         u1.getRoles()
-            .add(new UserRoles(u1,
-                r3));
+                .add(new UserRoles(u1,
+                        r3));
         userService.save(u1);
 
         // data, user
         User u2 = new User("student",
-            "1234567",
-            "student@lambdaschool.local");
+                "1234567",
+                "student@lambdaschool.local");
         u2.getRoles()
-            .add(new UserRoles(u2,
-                r2));
-        u2.getRoles()
-            .add(new UserRoles(u2,
-                r3));
+                .add(new UserRoles(u2,
+                        r2));
         userService.save(u2);
 
         // user
         User u3 = new User("volunteer",
-            "password",
-            "volunteer@lambdaschool.local");
+                "password",
+                "volunteer@lambdaschool.local");
         u3.getRoles()
-            .add(new UserRoles(u3,
-                r2));
+                .add(new UserRoles(u3,
+                        r3));
         u3.getUsertasks()
                 .add(new UserTasks( u3, "Teach Math"));
         u3.getUsertasks()
@@ -128,8 +125,8 @@ public class SeedData
                 fakeUser.getRoles()
                     .add(new UserRoles(fakeUser,
                         r2));
-                fakeUser.getUseremails()
-                    .add(new Useremail(fakeUser,
+                fakeUser.getUsertasks()
+                    .add(new UserTasks(fakeUser,
                         fakeValuesService.bothify("????##@gmail.com")));
                 userService.save(fakeUser);
             }

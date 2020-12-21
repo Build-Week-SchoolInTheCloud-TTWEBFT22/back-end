@@ -61,6 +61,11 @@ public class UserServiceImpl
         return list;
     }
 
+    @Override
+    public List<User> getVolunteers() {
+        return userrepos.getVolunteers();
+    }
+
     @Transactional
     @Override
     public void delete(long id)
