@@ -50,6 +50,18 @@ public class UserTasksController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PutMapping("/task/{taskid}/description/{taskdescription}")
+    public ResponseEntity<?> updateTask(
+        @PathVariable
+            long taskid,
+        @PathVariable
+            String taskdescription)
+    {
+        userTaskService.update(taskid, taskdescription);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     // POST http://localhost:2019/tasks/task/{userid}/description/{taskdescription}
     @PreAuthorize("hasAnyRole('ADMIN')")
