@@ -111,3 +111,38 @@ create a user with the usertype student or volunteer
 ```
 </details>
 
+-----------------------------------------------------------------------------------------
+
+### DELETE - Delete A Specific Task
+<details>
+<summary>https://schoolinthecloudstt22.herokuapp.com/tasks/task/{taskid}</summary>
+
+```JSON
+HttpStatus OK
+```
+</details>
+
+
+-----------------------------------------------------------------------------------------
+
+### PUT - Update A Specific Task
+<details>
+<summary>https://schoolinthecloudstt22.herokuapp.com/tasks/task/{taskid}/description/{taskdescription}</summary>
+
+```JSON
+HttpStatus OK
+```
+</details>
+
+
+-----------------------------------------------------------------------------------------
+
+### POST - Add A Task To A Volunteer
+<details>
+<summary>https://schoolinthecloudstt22.herokuapp.com/tasks/task/{taskid}/description/{taskdescription}</summary>
+
+```JSON
+HttpStatus CREATED
+```
+</details>
+
