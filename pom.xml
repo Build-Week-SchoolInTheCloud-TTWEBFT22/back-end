@@ -111,7 +111,7 @@
     </dependencies>
 
     <build>
-        <finalName>schoolintheclouds</finalName>
+        <finalName>schoolinthecloudstt22</finalName>
 
         <plugins>
             <plugin>
