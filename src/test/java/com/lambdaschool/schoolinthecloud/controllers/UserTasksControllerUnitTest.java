@@ -26,6 +26,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -33,6 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SchoolInTheCloudApplication.class)
@@ -61,6 +64,8 @@ public class UserTasksControllerUnitTest {
         User u3 = new User("volunteer",
                 "password",
                 "volunteer@lambdaschool.local");
+        u3.setUserid(10);
+
         u3.getRoles()
                 .add(new UserRoles(u3,
                         r1));
@@ -74,7 +79,7 @@ public class UserTasksControllerUnitTest {
         u3.setAvailability("1-2pm PST");
 
         UserTasks mockTask = new UserTasks(u3,"Teach Science");
-
+        mockTask.setTaskid(10);
         userTasksList.add(mockTask);
 
         RestAssuredMockMvc.webAppContextSetup(webApplicationContext);
@@ -117,18 +122,70 @@ public class UserTasksControllerUnitTest {
     }
 
     @Test
-    public void getTaskById() {
+    public void getTaskById() throws Exception {
+        String apiUrl = "/tasks/task/10";
+
+        Mockito.when(userTaskService.findUsertasksById(10))
+                .thenReturn(userTasksList.get(0));
+
+        RequestBuilder rb = MockMvcRequestBuilders.get(apiUrl)
+                .accept(MediaType.APPLICATION_JSON);
+        MvcResult r = mockMvc.perform(rb)
+                .andReturn(); // this could throw an exception
+        String tr = r.getResponse()
+                .getContentAsString();
+
+        ObjectMapper mapper = new ObjectMapper();
+        String er = mapper.writeValueAsString(userTasksList.get(0));
+
+        System.out.println("Expect: " + er);
+        System.out.println("Actual: " + tr);
+
+        assertEquals("Rest API Returns List",
+                er,
+                tr);
     }
 
     @Test
-    public void deleteTask() {
+    public void deleteTask() throws Exception {
+        String apiUrl = "/tasks/task/{taskid}";
+
+        RequestBuilder rb = MockMvcRequestBuilders.delete(apiUrl,
+                "10")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
+        mockMvc.perform(rb)
+                .andExpect(status().is2xxSuccessful())
+                .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
-    public void updateTask() {
+    public void updateTask() throws Exception {
+        String apiUrl = "/tasks/task/{taskid}/description/{taskdescription}}";
+
+        Mockito.when(userTaskService.update(any(Long.class),
+                any(String.class)))
+                .thenReturn(userTasksList.get(0));
+
+        RequestBuilder rb = MockMvcRequestBuilders.put(apiUrl,
+                100, "Test");
+
+        mockMvc.perform(rb)
+                .andExpect(status().is2xxSuccessful())
+                .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
-    public void addTask() {
+    public void addTask() throws Exception {
+        String apiUrl = "/tasks/task/{userid}/description/{taskdescription}";
+
+        Mockito.when(userTaskService.save(any(Long.class), any(String.class)))
+                .thenReturn(userTasksList.get(0));
+
+        RequestBuilder rb = MockMvcRequestBuilders.post(apiUrl, 10L, "Test");
+
+        mockMvc.perform(rb)
+                .andExpect(status().isCreated())
+                .andDo(MockMvcResultHandlers.print());
     }
 }
