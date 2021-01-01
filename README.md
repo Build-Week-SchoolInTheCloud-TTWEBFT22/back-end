@@ -16,9 +16,9 @@ create a user with the usertype student or volunteer
 ```
 </details>
 
+-----------------------------------------------------------------------------------------
 
 ### GET - Get All Volunteers
-get all volunteers
 <details>
 <summary>https://schoolinthecloudstt22.herokuapp.com/volunteers/volunteers</summary>
 
@@ -49,8 +49,9 @@ get all volunteers
 ```
 </details>
 
+-----------------------------------------------------------------------------------------
+
 ### GET - Get All Tasks
-get all assigned tasks
 <details>
 <summary>https://schoolinthecloudstt22.herokuapp.com/tasks/tasks</summary>
 
@@ -65,6 +66,37 @@ get all assigned tasks
             "primaryemail": "mac.pfeffer@hotmail.com",
             "country": "Sweden",
             "availability": "Fri Jan 29 01:57:57 UTC 2021",
+            "roles": [
+                {
+                    "role": {
+                        "roleid": 3,
+                        "name": "VOLUNTEER"
+                    }
+                }
+            ]
+        }
+    }
+]
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### GET - Get Specific Task
+<details>
+<summary>https://schoolinthecloudstt22.herokuapp.com/tasks/task/{taskid}</summary>
+
+```JSON
+[
+    {
+        "taskid": 10,
+        "description": "Teach Music",
+        "user": {
+            "userid": 6,
+            "username": "volunteer",
+            "primaryemail": "volunteer@lambdaschool.local",
+            "country": null,
+            "availability": null,
             "roles": [
                 {
                     "role": {
