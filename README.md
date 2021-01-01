@@ -18,6 +18,18 @@ create a user with the usertype student or volunteer
 
 -----------------------------------------------------------------------------------------
 
+### GET - Logout User
+create a user with the usertype student or volunteer
+<details>
+<summary>https://schoolinthecloudstt22.herokuapp.com/logout</summary>
+
+```JSON
+HttpStatus OK
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get All Volunteers
 <details>
 <summary>https://schoolinthecloudstt22.herokuapp.com/volunteers/volunteers</summary>
