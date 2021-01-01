@@ -1,17 +1,17 @@
 # Build Week School In The Clouds - TT22
 
-
+### Create Account
+create a user with the usertype student or volunteer
 <details>
-<summary>http://localhost:2019/createnewuser/{usertype}</summary>
+<summary>https://schoolinthecloudstt22.herokuapp.com/createnewuser/{usertype}</summary>
 
 ```JSON
 [
     {
-        "username": "admin@email.local",
-        "email":
-        "password":
+        "username": "testusername",
+        "email": "email@email.com",
+        "password": "password"
     }
 ]
 ```
-
 </details>
