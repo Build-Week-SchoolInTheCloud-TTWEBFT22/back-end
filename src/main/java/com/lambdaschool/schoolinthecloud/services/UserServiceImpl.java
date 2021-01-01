@@ -105,6 +105,8 @@ public class UserServiceImpl
         newUser.setPasswordNoEncrypt(user.getPassword());
         newUser.setPrimaryemail(user.getPrimaryemail()
             .toLowerCase());
+        newUser.setCountry(user.getCountry());
+        newUser.setAvailability(user.getAvailability());
 
         newUser.getRoles()
             .clear();
@@ -157,6 +159,15 @@ public class UserServiceImpl
                 currentUser.setPrimaryemail(user.getPrimaryemail()
                     .toLowerCase());
             }
+
+            if (user.getCountry() != null) {
+                currentUser.setCountry(user.getCountry());
+            }
+
+            if (user.getAvailability() != null) {
+                currentUser.setAvailability(user.getAvailability());
+            }
+
 
             if (user.getRoles()
                 .size() > 0)

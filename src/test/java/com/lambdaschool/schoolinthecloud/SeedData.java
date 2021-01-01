@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * SeedData puts both known and random data into the database. It implements CommandLineRunner.
@@ -99,6 +100,8 @@ public class SeedData
                 .add(new UserTasks( u3, "Teach History"));
         u3.getUsertasks()
                 .add(new UserTasks( u3, "Teach Music"));
+        u3.setCountry("USA");
+        u3.setAvailability("1-2pm PST");
         userService.save(u3);
 
         if (false)
@@ -107,8 +110,6 @@ public class SeedData
             // https://www.baeldung.com/java-faker
             // https://www.baeldung.com/regular-expressions-java
 
-            FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"),
-                new RandomService());
             Faker nameFaker = new Faker(new Locale("en-US"));
 
             for (int i = 0; i < 25; i++)
@@ -117,16 +118,18 @@ public class SeedData
                 User fakeUser;
 
                 fakeUser = new User(nameFaker.name()
-                    .username(),
-                    "password",
-                    nameFaker.internet()
-                        .emailAddress());
+                        .username(),
+                        "password",
+                        nameFaker.internet()
+                                .emailAddress());
                 fakeUser.getRoles()
-                    .add(new UserRoles(fakeUser,
-                        r2));
+                        .add(new UserRoles(fakeUser,
+                                r3));
+                fakeUser.setCountry(nameFaker.country().name());
+                fakeUser.setAvailability(nameFaker.date().future(30, TimeUnit.DAYS).toString());
                 fakeUser.getUsertasks()
-                    .add(new UserTasks(fakeUser,
-                        fakeValuesService.bothify("????##@gmail.com")));
+                        .add(new UserTasks(fakeUser, "Teach " +
+                                nameFaker.job().field()));
                 userService.save(fakeUser);
             }
         }

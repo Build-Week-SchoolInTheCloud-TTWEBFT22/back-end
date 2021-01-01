@@ -1,5 +1,6 @@
 package com.lambdaschool.schoolinthecloud;
 
+import com.github.javafaker.Educator;
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * SeedData puts both known and random data into the database. It implements CommandLineRunner.
@@ -102,14 +104,12 @@ public class SeedData
         userService.save(u3);
 
 
-        if (false)
+        if (true)
         {
             // using JavaFaker create a bunch of regular users
             // https://www.baeldung.com/java-faker
             // https://www.baeldung.com/regular-expressions-java
 
-            FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"),
-                new RandomService());
             Faker nameFaker = new Faker(new Locale("en-US"));
 
             for (int i = 0; i < 25; i++)
@@ -124,10 +124,12 @@ public class SeedData
                         .emailAddress());
                 fakeUser.getRoles()
                     .add(new UserRoles(fakeUser,
-                        r2));
+                        r3));
+                fakeUser.setCountry(nameFaker.country().name());
+                fakeUser.setAvailability(nameFaker.date().future(30, TimeUnit.DAYS).toString());
                 fakeUser.getUsertasks()
-                    .add(new UserTasks(fakeUser,
-                        fakeValuesService.bothify("????##@gmail.com")));
+                    .add(new UserTasks(fakeUser, "Teach " +
+                      nameFaker.job().field()));
                 userService.save(fakeUser);
             }
         }

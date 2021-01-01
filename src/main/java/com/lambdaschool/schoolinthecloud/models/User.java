@@ -52,6 +52,10 @@ public class User
     private String primaryemail;
 
 
+    private String country;
+    private String availability;
+
+
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
@@ -94,6 +98,14 @@ public class User
         setUsername(username);
         setPassword(password);
         this.primaryemail = primaryemail;
+    }
+
+    public User(String username, String password, String primaryemail, String country, String availability) {
+        setUsername(username);
+        setPassword(password);
+        this.primaryemail = primaryemail;
+        this.country = country;
+        this.availability = availability;
     }
 
     /**
@@ -154,6 +166,22 @@ public class User
     public void setPrimaryemail(String primaryemail)
     {
         this.primaryemail = primaryemail.toLowerCase();
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 
     /**

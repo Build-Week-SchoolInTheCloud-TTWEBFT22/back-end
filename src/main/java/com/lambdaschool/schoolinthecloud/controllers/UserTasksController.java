@@ -1,10 +1,7 @@
 package com.lambdaschool.schoolinthecloud.controllers;
 
-import com.lambdaschool.schoolinthecloud.models.User;
 import com.lambdaschool.schoolinthecloud.models.UserTasks;
-import com.lambdaschool.schoolinthecloud.services.UserService;
 import com.lambdaschool.schoolinthecloud.services.UserTaskService;
-import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,9 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
