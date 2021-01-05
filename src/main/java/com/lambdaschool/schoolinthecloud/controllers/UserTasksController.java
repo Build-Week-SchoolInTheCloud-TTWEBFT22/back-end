@@ -60,7 +60,7 @@ public class UserTasksController {
 
     // POST http://localhost:2019/tasks/task/{userid}/description/{taskdescription}
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @PostMapping(value = "/task/{userid}/description/{taskdescription}", consumes = "application/json")
+    @PostMapping(value = "/task/{userid}/description/{taskdescription}")
     public ResponseEntity<?> addTask(
         @PathVariable long userid,
         @PathVariable String taskdescription) {
