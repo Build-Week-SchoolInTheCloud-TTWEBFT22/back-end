@@ -56,6 +56,7 @@ public class User
     private String availability;
 
 
+    //OneToMany -> UserTasks
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true)

@@ -54,6 +54,8 @@ public class SeedData
     {
         userService.deleteAll();
         roleService.deleteAll();
+
+        //** SETUP ROLES *************************
         Role r1 = new Role("admin");
         Role r2 = new Role("student");
         Role r3 = new Role("volunteer");
@@ -62,7 +64,9 @@ public class SeedData
         r2 = roleService.save(r2);
         r3 = roleService.save(r3);
 
-        // admin, data, user
+        //** SETUP USERS *************************
+
+        //Admin
         User u1 = new User("admin",
                 "password",
                 "admin@lambdaschool.local");
@@ -75,18 +79,23 @@ public class SeedData
         u1.getRoles()
                 .add(new UserRoles(u1,
                         r3));
+        u1.setCountry("USA");
+        u1.setAvailability("1-2pm PST");
         userService.save(u1);
 
-        // data, user
+
+        //Student
         User u2 = new User("student",
                 "1234567",
                 "student@lambdaschool.local");
         u2.getRoles()
                 .add(new UserRoles(u2,
                         r2));
+        u2.setCountry("USA");
+        u2.setAvailability("1-2pm PST");
         userService.save(u2);
 
-        // user
+        //Volunteer
         User u3 = new User("volunteer",
                 "password",
                 "volunteer@lambdaschool.local");
@@ -101,9 +110,12 @@ public class SeedData
                 .add(new UserTasks( u3, "Teach History"));
         u3.getUsertasks()
                 .add(new UserTasks( u3, "Teach Music"));
+        u3.setCountry("USA");
+        u3.setAvailability("1-2pm PST");
         userService.save(u3);
 
 
+        //** SETUP JAVA FAKER *************************
         if (true)
         {
             // using JavaFaker create a bunch of regular users

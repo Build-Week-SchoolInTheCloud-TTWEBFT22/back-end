@@ -74,6 +74,8 @@ public class SeedData
         u1.getRoles()
                 .add(new UserRoles(u1,
                         r3));
+        u1.setCountry("USA");
+        u1.setAvailability("1-2pm PST");
         userService.save(u1);
 
         // data, user
@@ -83,6 +85,8 @@ public class SeedData
         u2.getRoles()
                 .add(new UserRoles(u2,
                         r2));
+        u2.setCountry("USA");
+        u2.setAvailability("1-2pm PST");
         userService.save(u2);
 
         // user
